@@ -5,6 +5,10 @@ const updateInventory = (arr1, arr2) => {
         indexUpd !== -1 ? updated[indexUpd][0] += x[0] : 
         updated.push(x);
     }
-    updated.sort((a, b) => a[1]-b[1]);
+    updated.sort((a, b) => {
+      let itemA = a[1].toLowerCase();
+      let itemB = b[1].toLowerCase();
+      return itemA < itemB ? -1 : itemA > itemB ? 1 : 0;
+    });
     return updated;
 }
